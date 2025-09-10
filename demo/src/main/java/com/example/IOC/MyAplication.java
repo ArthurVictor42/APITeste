@@ -10,10 +10,10 @@ import com.example.Anotacoes.MyService;
 public class MyAplication {
     private final Map<Class<?>, Object> beans = new HashMap<>();
 
-    public MyAplication(Class<?>... componentes){
+    public MyAplication(Class<?>... componentes) {
         try {
-            for(Class<?> clazz : componentes ){
-                if(clazz.isAnnotationPresent(MyService.class) || clazz.isAnnotationPresent(MyControllers.class)){
+            for (Class<?> clazz : componentes) {
+                if (clazz.isAnnotationPresent(MyService.class) || clazz.isAnnotationPresent(MyControllers.class)) {
                     createbeans(clazz);
                 }
             }
@@ -23,7 +23,7 @@ public class MyAplication {
     }
 
     public Object createbeans(Class<?> clazz) throws Exception {
-        if(beans.containsKey(clazz)){
+        if (beans.containsKey(clazz)) {
             return beans.get(clazz);
         }
 
@@ -33,7 +33,7 @@ public class MyAplication {
 
         Object[] dependencias = new Object[parametros.length];
 
-        for(int i = 0; i < parametros.length; i++){
+        for (int i = 0; i < parametros.length; i++) {
             dependencias[i] = createbeans(parametros[i]);
         }
 
@@ -44,7 +44,7 @@ public class MyAplication {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> T getBean(Class<T> clazz){
+    public <T> T getBean(Class<T> clazz) {
         return (T) beans.get(clazz);
     }
 }

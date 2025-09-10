@@ -10,27 +10,27 @@ import com.example.Repository.UsuarioRepositorio;
 public class UsuarioServico {
     private final UsuarioRepositorio repositorio;
 
-    public UsuarioServico(UsuarioRepositorio repositorio){
+    public UsuarioServico(UsuarioRepositorio repositorio) {
         this.repositorio = repositorio;
     }
 
-    public void Create(Usuario usuario){
+    public void Create(Usuario usuario) {
         repositorio.Create(usuario);
     }
 
-    public boolean Delete(int id){
+    public boolean Delete(int id) {
         return repositorio.Delete(id);
     }
 
-    public ArrayList<Usuario >ReadAll(){
+    public ArrayList<Usuario> ReadAll() {
         return repositorio.ReadAll();
     }
 
-    public boolean Update(Usuario usuario){
+    public boolean Update(Usuario usuario) {
         return repositorio.Update(usuario);
     }
 
-    public Usuario ReadId(int id){
+    public Usuario ReadId(int id) {
         return repositorio.readID(id);
     }
 

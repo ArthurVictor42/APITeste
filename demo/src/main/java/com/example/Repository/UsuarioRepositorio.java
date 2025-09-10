@@ -6,15 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.example.Anotacoes.MyService;
+import com.example.Anotacoes.MyRepository;
 import com.example.Conexao.ConexaoJDBC;
 import com.example.Entidade.Usuario;
 
-@MyService
+@MyRepository
 public class UsuarioRepositorio {
 
     public void Create(Usuario usuario) {
-        String sql = "INSERT INTO user (nome, id, email, cpf) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nome, id, email, cpf) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = ConexaoJDBC.conexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, usuario.getNome());
@@ -31,7 +31,7 @@ public class UsuarioRepositorio {
     }
 
     public boolean Delete(int id) {
-        String sql = "DELETE FROM user WHERE id = ?";
+        String sql = "DELETE FROM usuario WHERE id = ?";
 
         try (Connection conn = ConexaoJDBC.conexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -48,7 +48,7 @@ public class UsuarioRepositorio {
     }
 
     public ArrayList<Usuario> ReadAll() {
-        String sql = "SELECT * FROM user";
+        String sql = "SELECT * FROM usuario";
         ArrayList<Usuario> lista = new ArrayList<>();
 
         try (Connection conn = ConexaoJDBC.conexao();
@@ -72,7 +72,7 @@ public class UsuarioRepositorio {
     }
 
     public boolean Update(Usuario usuario) {
-        String sql = "UPDATE user SET nome = ?, email = ?, cpf = ? WHERE id = ?";
+        String sql = "UPDATE usuario SET nome = ?, email = ?, cpf = ? WHERE id = ?";
 
         try (Connection conn = ConexaoJDBC.conexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, usuario.getNome());
@@ -92,7 +92,7 @@ public class UsuarioRepositorio {
     }
 
     public Usuario readID(int id) {
-        String sql = "SELECT * FROM user WHERE id = ?";
+        String sql = "SELECT * FROM usuario WHERE id = ?";
 
         try (Connection conn = ConexaoJDBC.conexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);

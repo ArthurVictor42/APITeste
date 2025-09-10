@@ -6,9 +6,10 @@ public class Usuario {
     private String email;
     private String cpf;
 
-    public Usuario(){}
+    public Usuario() {
+    }
 
-    public Usuario(String nome, int id, String email, String cpf){
+    public Usuario(String nome, int id, String email, String cpf) {
         this.nome = nome;
         this.id = id;
         this.email = email;
@@ -45,5 +46,15 @@ public class Usuario {
 
     public String getCpf() {
         return this.cpf;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
+                '}';
     }
 }

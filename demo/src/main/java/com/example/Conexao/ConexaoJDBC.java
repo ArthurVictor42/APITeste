@@ -4,10 +4,10 @@ import java.sql.*;
 
 public class ConexaoJDBC {
     public static String url = "jdbc:mysql://localhost:3306/apiserver";
-    public static String user = "root";
-    public static String password = "";
+    public static String usuario = "root";
+    public static String senha = "";
 
     public static Connection conexao() throws SQLException {
-        return DriverManager.getConnection(url, user, password);
+        return DriverManager.getConnection(url, usuario, senha);
     }
 }

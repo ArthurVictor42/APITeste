@@ -4,6 +4,8 @@ import com.example.Anotacoes.MyControllers;
 import com.example.Entidade.Usuario;
 import com.example.Service.UsuarioServico;
 
+import java.util.List;
+
 @MyControllers
 public class UsuarioController {
     private final UsuarioServico service;
@@ -12,22 +14,28 @@ public class UsuarioController {
         this.service = service;
     }
 
-    public String createUsuario(Usuario usuario){
+    public String createUsuario(Usuario usuario) {
         service.Create(usuario);
-
-        return "Usuario cadastrado com sucesso!";
- 
-    }
-    public String listarUsuarios() {
-        StringBuilder sb = new StringBuilder();
-        for (Usuario u : service.ReadAll()) {
-            sb.append(u.getId()).append(" - ").append(u.getNome()).append("\n");
-        }
-        return sb.toString();
+        return "Usuário cadastrado com sucesso!";
     }
 
-    public String buscarUsuario(int id) {
-        Usuario u = service.ReadId(id);
-        return u != null ? u.getNome() : "Usuário não encontrado";
+    public List<Usuario> listarUsuarios() {
+        return service.ReadAll();
+    }
+
+    public Usuario buscarUsuario(int id) {
+        return service.ReadId(id);
+    }
+
+    public boolean atualizarUsuario(Usuario usuario) {
+        return service.Update(usuario);
+    }
+
+    public boolean deletarUsuario(int id) {
+        return service.Delete(id);
+    }
+
+    public UsuarioServico getService() {
+        return service;
     }
 }
