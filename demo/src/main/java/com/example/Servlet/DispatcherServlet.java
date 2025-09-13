@@ -109,16 +109,25 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     private Usuario parseUsuario(String body) {
-        // Exemplo de entrada: "nome=João;email=joao@mail.com"
+        // Exemplo de entrada: "nome=João;email=joao@mail.com;cpf=12345678900"
         Usuario usuario = new Usuario();
         String[] campos = body.split(";");
         for (String campo : campos) {
             String[] par = campo.split("=");
             if (par.length == 2) {
-                if (par[0].trim().equalsIgnoreCase("nome")) {
-                    usuario.setNome(par[1].trim());
-                } else if (par[0].trim().equalsIgnoreCase("email")) {
-                    usuario.setEmail(par[1].trim());
+                String chave = par[0].trim().toLowerCase();
+                String valor = par[1].trim();
+
+                switch (chave) {
+                    case "nome":
+                        usuario.setNome(valor);
+                        break;
+                    case "email":
+                        usuario.setEmail(valor);
+                        break;
+                    case "cpf":
+                        usuario.setCpf(valor);
+                        break;
                 }
             }
         }

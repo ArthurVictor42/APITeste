@@ -14,13 +14,12 @@ import com.example.Entidade.Usuario;
 public class UsuarioRepositorio {
 
     public void Create(Usuario usuario) {
-        String sql = "INSERT INTO usuario (nome, id, email, cpf) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nome, email, cpf) VALUES (?, ?, ?)";
 
         try (Connection conn = ConexaoJDBC.conexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, usuario.getNome());
-            stmt.setInt(2, usuario.getId());
-            stmt.setString(3, usuario.getEmail());
-            stmt.setString(4, usuario.getCpf());
+            stmt.setString(2, usuario.getEmail());
+            stmt.setString(3, usuario.getCpf());
 
             stmt.executeUpdate();
             System.out.println("Usuario cadastrado com sucesso!");
